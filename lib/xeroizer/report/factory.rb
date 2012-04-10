@@ -6,7 +6,6 @@ module Xeroizer
   module Report
     class Factory
       
-      extend ActiveSupport::Memoizable
       include ApplicationHttpProxy
 
       attr_reader :application
@@ -35,12 +34,11 @@ module Xeroizer
 
         def klass
           begin
-            Xeroizer::Report.const_get(report_type)
+            @_klass_cache ||= Xeroizer::Report.const_get(report_type)
           rescue NameError => ex # use default class
             Base
           end
         end
-        memoize :klass
 
       protected
               

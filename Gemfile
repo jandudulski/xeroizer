@@ -8,9 +8,10 @@ gem 'i18n'
 gem 'yard'
 
 group :test do
+  gem 'test-unit'
   gem 'mocha'
   gem 'shoulda'
-  gem "jeweler", "~> 1.5.2"
+  gem "jeweler"
   gem "rest-client"
   gem "turn"
   gem "ansi"
